@@ -14,6 +14,7 @@ const (
 	DEBUG = iota
 	INFO
 	CRITICAL
+	WARNING
 	FATAL
 )
 
