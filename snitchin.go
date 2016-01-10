@@ -13,8 +13,8 @@ import (
 const (
 	DEBUG = iota
 	INFO
-	CRITICAL
 	WARNING
+	CRITICAL
 	FATAL
 )
 
