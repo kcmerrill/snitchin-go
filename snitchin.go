@@ -18,7 +18,7 @@ const (
 )
 
 /* Create main struct */
-type snitchin struct {
+type Snitchin struct {
 	channels map[string]channel
 }
 
@@ -40,9 +40,9 @@ func (c channel) Log(level int, msg string) {
 }
 
 /* Create a new snitcher */
-func New() *snitchin {
+func New() *Snitchin {
 	/* Return a new snitchin */
-	s := &snitchin{}
+	s := &Snitchin{}
 	/* Init the map */
 	s.channels = make(map[string]channel)
 	/* Return the goods */
@@ -50,12 +50,12 @@ func New() *snitchin {
 }
 
 /* Create a channel */
-func (s *snitchin) AddChannel(name string, level int, writer io.Writer) {
+func (s *Snitchin) AddChannel(name string, level int, writer io.Writer) {
 	s.channels[name] = channel{name: name, level: level, writer: writer}
 }
 
 /* Return a specific channel */
-func (s *snitchin) Channel(name string) channel {
+func (s *Snitchin) Channel(name string) channel {
 	if _, exists := s.channels[name]; !exists {
 		/* If the channel doesn't exist, create it with a basic stdout on the default level */
 		s.AddChannel(name, DEBUG, os.Stdout)
@@ -66,7 +66,7 @@ func (s *snitchin) Channel(name string) channel {
 }
 
 /* Send the log to every channel */
-func (s *snitchin) Log(level int, msg string) {
+func (s *Snitchin) Log(level int, msg string) {
 	for _, channel := range s.channels {
 		channel.Log(level, msg)
 	}
