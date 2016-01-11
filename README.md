@@ -14,7 +14,7 @@ import (
 
 func main() {
         /* Create a new logger */
-        s := log.New()
+        s := log.New("SAMPLEAPP")
 
         /* Define some channels, and their log levels */
         s.AddChannel("CRIT-CHANNEL", log.CRITICAL, os.Stdout)
@@ -28,7 +28,7 @@ func main() {
         /* Show some basic logs, goes to every channel */
         s.Log(log.CRITICAL, "this is a message to all channels")
         s.Log(log.DEBUG, "This should only be one log line")
-        
+
         /* Log to a specific channel onyl */
         s.Channel("CRIT-CHANNEL").Log(log.CRITICAL, "My critical message here")
 }
