@@ -15,8 +15,9 @@ const (
 	INFO
 	WARNING
 	CRITICAL
-	IMPORTANT
 	FATAL
+	IMPORTANT
+	NOTIFY
 )
 
 /* Create main struct */
