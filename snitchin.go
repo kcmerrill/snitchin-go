@@ -45,8 +45,8 @@ func log(level_name string, msg string) {
 func init() {
 	//Setup our custom log levels
 	CustomLevel("DEBUG", 100, "\033[38;5;0m")
-	CustomLevel("INFO", 200, "\033[38;5;42m")
-	CustomLevel("NOTICE", 250, "\033[38;5;231m")
+	CustomLevel("INFO", 200, "\033[38;5;231m")
+	CustomLevel("NOTICE", 250, "\033[38;5;42m")
 	CustomLevel("WARNING", 300, "\033[38;5;220m")
 	CustomLevel("ERROR", 400, "\033[38;5;1m")
 	CustomLevel("CRITICAL", 500, "\033[38;5;88m")
