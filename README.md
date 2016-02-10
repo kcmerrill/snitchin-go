@@ -5,32 +5,32 @@ A multi channel log emitter(a clone of my php snitchin) written in GO
 Create as many or as few channels as you want, each with their own logging levels. The best way to demonstrate it is via code.
 
 ```
-package main
+  package main
 
-import (
-        log "github.com/kcmerrill/snitchin-go"
-        "os"
-)
+  import (
+      log "github.com/kcmerrill/snitchin-go"
+  )
 
-func main() {
-        /* Create a new logger */
-        s := log.New("SAMPLEAPP")
+  func main() {
+      /* Log to a file */
+      log.CreateChannel("TOAFILE", 100, log.File("/tmp/logger.txt"), "basic")
+      /* Log to slack */
+      log.CreateChannel("SLACK", 700, log.Slack("https://hooks.slack.com/services/customslackwebhookurl"), "%%MSG%%")
 
-        /* Define some channels, and their log levels */
-        s.AddChannel("CRIT-CHANNEL", log.CRITICAL, os.Stdout)
-        s.AddChannel("DEFAULT", log.DEBUG, os.Stderr)
-        s.AddChannel("TOFILE", log.WARNING, log.File("/tmp/log.txt"))
-        s.AddChannel("TOSLACK", log.INFO, log.Slack("https://hooks.slack.com/services/yourwebhookurlhere"))
+      log.DEBUG("HELLO DEBUG!!")
+      log.INFO("hello worldzzzzz")
+      log.NOTICE("THIS IS A NOTICE")
+      log.WARNING("THIS IS A WARNING")
+      log.ERROR("an error would go here")
+      log.CRITICAL("this would be a critical, or would it be?")
+      log.EMERGENCY("An emergency? Yes ... yes it is ..")
+      log.ALERT("this is an alert!")
 
-        /* Need to call out to a specific channel? Even if it doesn't exist? We'll create one with stdio for you */
-        s.Channel("DOESNOTEXIST").Log(log.INFO, "this channel does not exist")
+      /* If you only want to log to a specific channel, Also, notice the dynamic channel name */
+      log.Channel("SECURITY").Log("ALERT", "My message would go here")
 
-        /* Show some basic logs, goes to every channel */
-        s.Log(log.CRITICAL, "this is a message to all channels")
-        s.Log(log.DEBUG, "This should only be one log line")
-
-        /* Log to a specific channel onyl */
-        s.Channel("CRIT-CHANNEL").Log(log.CRITICAL, "My critical message here")
-}
+      /* Notice the custom log level */
+      log.Channel("SECURITY").Log("CUSTOMLOGLEVEL", "My message would go here")
+  }
 
 ```
