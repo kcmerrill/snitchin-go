@@ -54,7 +54,7 @@ func init() {
 	CustomLevel("ALERT", 700, "\033[38;5;123m")
 
 	//Lets create a basic formatter
-	CreateFormatter("basic-color", "%%PREFIX%%[%%TIME%%] [%%LEVEL%%] %%MSG%%\n")
+	CreateFormatter("basic-color", "%%PREFIX%%[%%TIME%%] [%%LEVEL%%] %%MSG%%\033[0m\n")
 	CreateFormatter("basic", "[%%TIME%%] [%%LEVEL%%] %%MSG%%\n")
 
 	//Lets create a default channel
