@@ -30,6 +30,10 @@ func (c channel) Log(level_name string, msg string) {
 	}
 }
 
+func (c *channel) SetLevel(level int) {
+	c.level = level
+}
+
 func CreateChannel(name string, level int, writer io.Writer, format string) {
 	channels[name] = &channel{name, level, writer, format}
 }
