@@ -32,7 +32,7 @@ func CLILogLevel() int {
 			return level
 		}
 	}
-	return 0
+	return 400
 }
 
 func Level(name string) (string, int, string) {
