@@ -52,6 +52,7 @@ func init() {
 	CustomLevel("CRITICAL", 500, "\033[38;5;88m")
 	CustomLevel("EMERGENCY", 600, "\033[38;5;160m")
 	CustomLevel("ALERT", 700, "\033[38;5;123m")
+	CustomLevel("SUCCESS", 700, "\033]02;36\]")
 
 	//Lets create a basic formatter
 	CreateFormatter("basic-color", "%%PREFIX%%[%%TIME%%] [%%LEVEL%%] %%MSG%%\033[0m\n")
