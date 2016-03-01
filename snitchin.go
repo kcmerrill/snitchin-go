@@ -58,5 +58,5 @@ func init() {
 	CreateFormatter("basic", "[%%TIME%%] [%%LEVEL%%] %%MSG%%\n")
 
 	//Lets create a default channel
-	CreateChannel("DEFAULT", 0, os.Stdout, "basic-color")
+	CreateChannel("DEFAULT", 400, os.Stdout, "basic-color")
 }
