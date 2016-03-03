@@ -36,6 +36,14 @@ func EMERGENCY(msg string) {
 	log("EMERGENCY", msg)
 }
 
+func OK(msg string) {
+	log("OK", msg)
+}
+
+func FAIL(msg string) {
+	log("FAIL", msg)
+}
+
 func log(level_name string, msg string) {
 	for _, channel := range channels {
 		channel.Log(level_name, msg)
@@ -52,7 +60,8 @@ func init() {
 	CustomLevel("CRITICAL", 500, "\033[38;5;88m")
 	CustomLevel("EMERGENCY", 600, "\033[38;5;160m")
 	CustomLevel("ALERT", 700, "\033[38;5;123m")
-	CustomLevel("SUCCESS", 700, "\033]02;36\]")
+	CustomLevel("OK", 700, "\033[38;5;42m")
+	CustomLevel("FAIL", 700, "\033[38;5;1m")
 
 	//Lets create a basic formatter
 	CreateFormatter("basic-color", "%%PREFIX%%[%%TIME%%] [%%LEVEL%%] %%MSG%%\033[0m\n")
